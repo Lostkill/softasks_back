@@ -1,0 +1,18 @@
+version: "3"
+
+services :
+  backend:
+    container_name: nodejsApi
+    build: .
+    command: npm start
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/app/backend
+    links:
+      - mongo
+  mongo:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - "27017:27017"
