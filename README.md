@@ -2,8 +2,20 @@
 
 ### TUTORIAL
 Para iniciar é bem simples
-você precisa ter em seu mongo os seguintes parametros: {
+basta rodar o comando docker-composer up.
+
+E ter em seu mongo os seguintes parametros: {
     DATABASE_NAME: todolist
 };
-Se você já tem o mongo iniciado com a database todolist,
-basta rodar o comando docker-composer up.
+
+### Testes
+Para rodar os testes nas API
+é preciso ter configurado o banco de testes
+por padrão deixei o banco Softasks do mLab
+
+Para utilizar um usuario que esteja no banco no mlab
+utilize as crendenciais a baixo
+
+login: teste,
+password: 123
+
