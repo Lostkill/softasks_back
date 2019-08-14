@@ -1,6 +1,9 @@
 # softasks BACK END
-A Todo list with nodeJS
 
-# Como iniciar?
-Para iniciar você precisa ter instalado o Docker e os bancos iniciados.
-Logo após basta rodar um docker-compose up
+### TUTORIAL
+Para iniciar é bem simples
+você precisa ter em seu mongo os seguintes parametros: {
+    DATABASE_NAME: todolist
+};
+Se você já tem o mongo iniciado com a database todolist,
+basta rodar o comando docker-composer up.

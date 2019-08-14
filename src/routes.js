@@ -7,6 +7,7 @@ const controllers = require('./controllers');
 routes.get('/', controllers.boardController.index);
 routes.post('/', controllers.boardController.store);
 routes.put('/:id', controllers.boardController.update);
+routes.delete('/:id', controllers.boardController.delete);
 
 //Rotas Tasks
 routes.put('/task/:id', controllers.taskController.update);

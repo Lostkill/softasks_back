@@ -86,7 +86,8 @@ module.exports = {
         try{
             const { type } = req.body;
             
-            const board = await Board.findById(req.params.id);
+            let board = await Board.findById(req.params.id);
+            let newBoard = [];
 
             /*
             *    As tasks precisão estar dentro dos boards, então pensando dessa forma
@@ -109,11 +110,19 @@ module.exports = {
                 *   Caso o type não seja tasks, significa que não estou tentando atualizar
                 *   uma task dentro de um board, e sim algum campo do proprio board
                 */
-                board = await Board.findByIdAndUpdate(req.params.id, req.body);
+                let body = req.body.payload;
+                newBoard = {
+                    ...board._doc,
+                    ...body
+                }
+                
+                board = await Board.findByIdAndUpdate(req.params.id, body);
+                await board.save();
             }
             
+            
             req.io.emit('BoardUpdate', board);
-            return res.json(board)
+            return res.json(newBoard)
         }catch( err ){
             return res.status('400').send({ message: 'Ops algo saiu errado... ', error: err })
         }
@@ -123,6 +132,9 @@ module.exports = {
     async delete(req, res){
         try{
             //Procura pelo id do board e o remove
+            const board = await Board.findById(req.params.id);
+            req.io.emit('BoardExcluded', board);
+
             await Board.findByIdAndDelete(req.params.id);
             return res.send('Task deletada com successo');
         }catch( err ){
