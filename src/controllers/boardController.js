@@ -3,7 +3,7 @@ const Task = require('../models/task');
 
 //CRUD TASKS
 module.exports = {
-    //Função que resgata as tasks de cada usuario
+    //Função que resgata os boards de cada usuario
     async index(req, res){
         try{
             const { creator } = req.query;
@@ -37,7 +37,7 @@ module.exports = {
         }        
     },
 
-    //Função que cria no banco as tarefas
+    //Função que cria no banco os boards
     async store(req, res){
         try{
             const { title, description, status, creator, tasks } = req.body;
@@ -67,7 +67,7 @@ module.exports = {
         }
     },
 
-    //Função atualiza task no banco
+    //Função atualiza um board, e adiciona uma task a um board
     async update(req, res){
         try{
             const { type } = req.body;
@@ -96,7 +96,7 @@ module.exports = {
         }
     },
 
-    //Remover task do banco
+    //Remover Board do banco
     async delete(req, res){
         try{
             await Board.findByIdAndDelete(req.params.id);

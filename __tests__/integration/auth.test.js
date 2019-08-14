@@ -8,7 +8,7 @@ const app = require('../../src/index');
 
 const User = mongoose.model('User');
 
-it('It should be able to signin with valid crendentials', async () => {
+it('Se é possivel LOGAR com crenciais validas ', async () => {
     const username = 'peiblow'
     const user = await User.findOne({ 
         username: 'peiblow',
@@ -19,22 +19,16 @@ it('It should be able to signin with valid crendentials', async () => {
         .post('/auth').send({ username, password: '123' });
 
     expect(response.body).to.have.property('resultado');
-});
+    
+}).timeout(5000);
 
-it('It should be able to save user data in db', async () => {
-    const username = 'pablo'
-    const name = 'Pablo Santos'
-    const email = 'pablo@gmail.com'
-
-    const user = await User.create({
-        email,
-        username,
-        name,
-        password: '123'
-    });
+it('Se é possivel salvar os dados do usuario na DB', async () => {
+    const username = 'peiblow56' //Username que não existe
+    const name = 'peiblow56' // name que não existe
+    const email = 'peiblow56@gmail.com' //email que não existe
 
     const response = await chai.request(app)
-        .post('/auth').send({ username, email, name, password: '123' });
+        .post('/register').send({ username, email, name, password: '123' });
 
-    expect(response.body).to.have.property('user');
-});
+    expect(response.body).to.have.property('username');
+}).timeout(5000);
