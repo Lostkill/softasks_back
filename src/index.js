@@ -1,7 +1,7 @@
-const envPath = process.env.NODE_ENV ? `.env.test` : '.env';
+// const envPath = process.env.NODE_ENV ? `.env.test` : '.env';
 
-const dotenv = require('dotenv');
-dotenv.config({ path: envPath });
+// const dotenv = require('dotenv');
+// dotenv.config({ path: envPath });
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,7 +14,7 @@ const io = require('socket.io')(server);
 
 //mLab link mongodb://softruck:softruck123@ds259787.mlab.com:59787/todolist
 //Image Docker 'mongodb://mongo:27017/todolist'
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect('mongodb://softruck:softruck123@ds259787.mlab.com:59787/todolist', {
     useNewUrlParser: true,
     useFindAndModify: false
 });
