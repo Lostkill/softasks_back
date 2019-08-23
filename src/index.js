@@ -14,7 +14,8 @@ const io = require('socket.io')(server);
 
 //mLab link mongodb://softruck:softruck123@ds259787.mlab.com:59787/todolist
 //Image Docker 'mongodb://mongo:27017/todolist'
-mongoose.connect(process.env.DATABASE_URL, {
+//'process.env.DATABASE_URL'
+mongoose.connect('mongodb://softruck:softruck123@ds259787.mlab.com:59787/todolist', {
     useNewUrlParser: true,
     useFindAndModify: false
 });
