@@ -1,7 +1,7 @@
-const envPath = process.env.NODE_ENV ? `.env.test` : '.env';
+// const envPath = process.env.NODE_ENV ? `.env.test` : '.env';
 
-const dotenv = require('dotenv');
-dotenv.config({ path: envPath });
+// const dotenv = require('dotenv');
+// dotenv.config({ path: envPath });
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -28,6 +28,6 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(require('./routes'));
 
-server.listen(process.env.PORT || 3001);
+server.listen(process.env.PORT);
 
 module.exports = app;
